@@ -1,6 +1,5 @@
 # nut-shell
-![DEMO](https://github.com/user-attachments/assets/c404d7b0-4c5f-4cf2-9561-50bbb05b875f) 
-
+![DEMO](https://github.com/user-attachments/assets/557624c7-f217-49f8-baaf-883b49408214)
 ## Installation
 ```sh 
 chmod u+x build.sh
