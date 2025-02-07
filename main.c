@@ -6,7 +6,7 @@
 
 #define ARR_LEN(arr) sizeof(arr)/sizeof(arr[0])
 
-const char ALL_COMMAND[20][10] = {"echo", "exit", "type"};
+const char ALL_COMMAND[20][10] = {"bola", "tero_tauko", "wtf"};
 
 #define MAX_PATH_LENGTH 1024
 
@@ -76,7 +76,7 @@ int main() {
       input[input_length - 1] = '\0';
     }
 
-    if(strcmp(input, "exit 0") == 0) {
+    if(strcmp(input, "tero_tauko") == 0) {
       break;
     }
 
@@ -89,10 +89,10 @@ int main() {
     } else {
       continue;
     }
-    if(strcmp(command, "echo") == 0) {
+    if(strcmp(command, "bola") == 0) {
       printf("%s\n", args);
     }
-    else if(strcmp(command, "type") == 0) {
+    else if(strcmp(command, "wtf") == 0) {
       if_type(args);
     }
     else {
