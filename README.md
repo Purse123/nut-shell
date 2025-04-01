@@ -1,6 +1,7 @@
 # Nut-Shell
-> Not professional build still in building process
-> Always accept issues
+> Not professional build still in building process <br/>
+> Always accept issues <br/>
+
 ![DEMO](https://github.com/user-attachments/assets/557624c7-f217-49f8-baaf-883b49408214)
 
 # Installation
