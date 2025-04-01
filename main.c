@@ -6,12 +6,12 @@
 
 #define ARR_LEN(arr) sizeof(arr)/sizeof(arr[0])
 
-const char ALL_COMMAND[20][10] = {"bola", "tero_tauko", "wtf"};
+const char ALL_COMMAND[20][10] = {"echo", "exit", "type"};
 
 #define MAX_PATH_LENGTH 1024
 
 char *find_in_path(const char *command) {
-  if (command[0] == '/') {  // ✅ Check if command is absolute path
+  if (command[0] == '/') {
     if (access(command, X_OK) == 0) {
       return strdup(command);
     }
@@ -44,6 +44,20 @@ char *find_in_path(const char *command) {
 }
 
 void if_type(char* arg) {
+  if (!arg || arg[0] == '\0') {
+    printf("type: missing argument\n");
+    return;
+  }
+  
+  // Extract the first argument
+  // otherwise, not work for eg: type ls -l
+  char arg_copy[MAX_PATH_LENGTH];
+  strncpy(arg_copy, arg, MAX_PATH_LENGTH-1);
+  arg_copy[MAX_PATH_LENGTH-1] = '\0';
+
+  // key-comp: handle multiple space or tab
+  char* first_arg = strtok(arg_copy, " \t");
+  
   for(size_t i = 0; i < ARR_LEN(ALL_COMMAND); i++) {
     if(strcmp(arg, ALL_COMMAND[i]) == 0) {
       printf("%s is a shell builtin\n", arg);
@@ -52,19 +66,20 @@ void if_type(char* arg) {
   }
   char *fetched_path = find_in_path(arg);
   if (fetched_path) {
-    printf("%s is %s\n", arg, fetched_path);
+    printf("%s is %s\n", arg, fetched_path); // idk might remove later
   } else {
     printf("%s: not found\n", arg);
   }
 }
+
 int main() {
   char input[100];
   char *args;
   char command[100];
   
-  setbuf(stdout, NULL); // Flush after every printf
+  setbuf(stdout, NULL);              // Flush buffer
 
-  while(1) {                                           // REPL: READ-EVAL-PRINT LOOP
+  while(1) {                         // REPL: READ-EVAL-PRINT LOOP
     printf("$ ");
     if (fgets(input, 100, stdin) == NULL) {
       break;
@@ -76,7 +91,7 @@ int main() {
       input[input_length - 1] = '\0';
     }
 
-    if(strcmp(input, "tero_tauko") == 0) {
+    if(strcmp(input, "exit 0") == 0) {
       break;
     }
 
@@ -89,10 +104,10 @@ int main() {
     } else {
       continue;
     }
-    if(strcmp(command, "bola") == 0) {
+    if(strcmp(command, "echo") == 0) {
       printf("%s\n", args);
     }
-    else if(strcmp(command, "wtf") == 0) {
+    else if(strcmp(command, "type") == 0) {
       if_type(args);
     }
     else {
