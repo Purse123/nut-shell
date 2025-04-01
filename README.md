@@ -12,8 +12,8 @@ chmod u+x build.sh
 ```
 
 # About Me
-Name: Pierce Neupane
-Introduction: Program speaks for itself
+- Name: Pierce Neupane
+- Introduction: Program speaks for itself
 
 # Commands
 | `Command`    | `Description`                                      |
@@ -30,9 +30,9 @@ Introduction: Program speaks for itself
 1. **How to make cursor move?**
 - install `rlwrap` package
 ```sh
-sudo apt install rlwrap    # for Ubuntu/Debian
-sudo dnf install rlwrap    # for Fedora
-pacman -S rlwrap           # for Arch
+$ sudo apt install rlwrap    # for Ubuntu/Debian
+$ sudo dnf install rlwrap    # for Fedora
+$ pacman -S rlwrap           # for Arch
 
 $ rlwrap ./build.sh
 ```
